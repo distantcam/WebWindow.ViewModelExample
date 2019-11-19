@@ -23,5 +23,5 @@ jobs:
       run: dotnet publish -r ${{matrix.RUNTIME}} -c Release -p:PublishSingleFile=true
     - uses: actions/upload-artifact@master
       with:
-        name: WebWindow-ViewModelExample
+        name: WebWindow-ViewModelExample-${{matrix.RUNTIME}}
         path: WebWindows.ViewModelExample/bin/Release/netcoreapp3.0/${{matrix.RUNTIME}}/publish
