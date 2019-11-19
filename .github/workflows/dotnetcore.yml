@@ -1,0 +1,23 @@
+name: .NET Core Build
+
+on: push
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        include:
+        - os: windows-latest
+          RUNTIME: win-x64
+        - os: ubuntu-latest
+          RUNTIME: linux-x64
+        - os: macos-latest
+          RUNTIME: osx-x64
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build
+      run: dotnet build --configuration Release
+    - name: Publish
+      run: dotnet publish -r ${{matrix.RUNTIME}} -p:PublishSingleFile=true
