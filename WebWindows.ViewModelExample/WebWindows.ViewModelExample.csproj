@@ -6,9 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="wwwroot\**">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Remove="wwwroot\**" />
+    <EmbeddedResource Include="wwwroot\**" />
   </ItemGroup>
 
   <ItemGroup>
