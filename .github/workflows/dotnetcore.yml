@@ -18,6 +18,10 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build
-      run: dotnet build --configuration Release
+      run: dotnet build -c Release
     - name: Publish
-      run: dotnet publish -r ${{matrix.RUNTIME}} -p:PublishSingleFile=true
+      run: dotnet publish -r ${{matrix.RUNTIME}} -c Release -p:PublishSingleFile=true
+    - uses: actions/upload-artifact@master
+      with:
+        name: WebWindow-ViewModelExample
+        path: WebWindows.ViewModelExample/bin/Release/netcoreapp3.0/${{matrix.RUNTIME}}/publish
